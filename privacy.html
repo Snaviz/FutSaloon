@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — FutSaloon</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #21262d;
+      --green: #4CAF50;
+      --green-dark: #1a2e1b;
+      --gold: #f0a500;
+      --text: #e6edf3;
+      --muted: #7d8590;
+      --orange: #e07b39;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-ball {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .header-badge {
+      margin-left: auto;
+      background: var(--green-dark);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--green);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--bg) 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .hero-icon { font-size: 48px; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero-date {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Intro card ── */
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--green);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      background: var(--green-dark);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: 'DM Mono', monospace;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+    p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* ── Lista ── */
+    .lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .lista li::before {
+      content: '›';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .lista li strong {
+      color: var(--text);
+    }
+
+    /* ── Nota verde ── */
+    .nota {
+      background: var(--green-dark);
+      border: 1px solid var(--green);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    /* ── Link ── */
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: block;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      color: var(--muted);
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--green); }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header { padding: 16px; }
+      .hero { padding: 32px 16px 28px; }
+      .container { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-ball">⚽</div>
+      <span class="logo-name">FutSaloon</span>
+    </a>
+    <span class="header-badge">Privacy Policy</span>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">🔒</div>
+    <h1>Privacy Policy</h1>
+    <p>Come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali</p>
+    <span class="hero-date">Ultimo aggiornamento: maggio 2025</span>
+  </div>
+
+  <div class="container">
+
+    <div class="intro-card">
+      FutSaloon rispetta la tua privacy e si impegna a proteggere i dati personali degli utenti.
+      Questa Privacy Policy descrive quali dati raccogliamo, come li utilizziamo e quali diritti hai in merito.
+    </div>
+
+    <!-- 1 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">01</span> Dati che raccogliamo</h2>
+      <p class="section-subtitle">Dati forniti direttamente da te</p>
+      <ul class="lista">
+        <li><strong>Nome e cognome</strong> — usato per identificarti nell'app</li>
+        <li><strong>Indirizzo email</strong> — usato per autenticarti</li>
+        <li><strong>Foto profilo</strong> — opzionale, visibile agli altri utenti del tuo gruppo</li>
+        <li><strong>Ruolo preferito</strong> — opzionale (es. attaccante, portiere)</li>
+      </ul>
+      <p class="section-subtitle">Dati generati dall'utilizzo</p>
+      <ul class="lista">
+        <li><strong>Statistiche di gioco</strong> — partite, gol, MVP, messaggi inviati</li>
+        <li><strong>Gruppi e partite</strong> — i gruppi a cui appartieni e le partite a cui partecipi</li>
+        <li><strong>Messaggi in chat</strong> — visibili solo ai membri del gruppo</li>
+        <li><strong>Token notifiche push</strong> — per inviarti notifiche sulle partite</li>
+        <li><strong>Preferenze app</strong> — come le impostazioni notifiche, salvate localmente</li>
+      </ul>
+    </div>
+
+    <!-- 2 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">02</span> Come utilizziamo i tuoi dati</h2>
+      <ul class="lista">
+        <li>Fornire e migliorare i servizi di FutSaloon</li>
+        <li>Mostrare il tuo profilo agli altri membri dei tuoi gruppi</li>
+        <li>Calcolare statistiche e classifiche</li>
+        <li>Inviarti notifiche push sulle partite e gli aggiornamenti del gruppo</li>
+        <li>Garantire la sicurezza e il corretto funzionamento dell'app</li>
+      </ul>
+      <div class="nota">
+        🔒 Non vendiamo, affittiamo o cediamo i tuoi dati personali a terze parti per scopi commerciali.
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">03</span> Servizi di terze parti</h2>
+      <p>FutSaloon utilizza i seguenti servizi esterni, ciascuno con la propria privacy policy:</p>
+      <ul class="lista">
+        <li><strong>Firebase (Google)</strong> — autenticazione, database e archiviazione dati</li>
+        <li><strong>Expo Push Notifications</strong> — invio notifiche push</li>
+        <li><strong>OpenStreetMap / Nominatim</strong> — ricerca e visualizzazione luoghi</li>
+      </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">04</span> Conservazione dei dati</h2>
+      <p>I tuoi dati vengono conservati finché il tuo account è attivo. Puoi richiedere la cancellazione in qualsiasi momento dalla sezione "Account" nelle Impostazioni. Alla cancellazione, tutti i tuoi dati personali vengono rimossi entro 30 giorni.</p>
+      <p>I messaggi inviati in chat potrebbero restare visibili agli altri membri del gruppo fino alla cancellazione del gruppo stesso.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">05</span> Sicurezza</h2>
+      <p>Utilizziamo misure di sicurezza standard del settore per proteggere i tuoi dati, tra cui la crittografia in transito (HTTPS) e le regole di sicurezza di Firebase. Tuttavia, nessun sistema è completamente sicuro: ti invitiamo a usare una password robusta e a non condividere le tue credenziali.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">06</span> I tuoi diritti</h2>
+      <p>Hai il diritto di:</p>
+      <ul class="lista">
+        <li><strong>Accesso</strong> — richiedere una copia dei tuoi dati</li>
+        <li><strong>Rettifica</strong> — correggere dati errati o incompleti</li>
+        <li><strong>Cancellazione</strong> — eliminare il tuo account e tutti i dati associati</li>
+        <li><strong>Opposizione</strong> — opporti al trattamento in determinate circostanze</li>
+        <li><strong>Portabilità</strong> — ricevere i tuoi dati in formato leggibile</li>
+      </ul>
+      <p>Per esercitare questi diritti, contattaci a <a href="mailto:futsaloonsupport@gmail.com">futsaloonsupport@gmail.com</a></p>
+    </div>
+
+    <!-- 7 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">07</span> Minori</h2>
+      <p>FutSaloon non è destinata a minori di 13 anni. Non raccogliamo consapevolmente dati di minori. Se sei un genitore e ritieni che tuo figlio abbia creato un account, contattaci per richiederne la cancellazione.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">08</span> Modifiche a questa policy</h2>
+      <p>Potremmo aggiornare questa Privacy Policy periodicamente. In caso di modifiche sostanziali, ti notificheremo tramite l'app. L'uso continuato di FutSaloon dopo le modifiche costituisce accettazione della nuova policy.</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">09</span> Contatti</h2>
+      <p>Per qualsiasi domanda sulla privacy, scrivici a:<br/>
+      <a href="mailto:futsaloonsupport@gmail.com">futsaloonsupport@gmail.com</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-logo">⚽ FutSaloon</span>
+    <span>Privacy Policy · v1.0 · maggio 2025</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Termini di Servizio</a>
+      <a href="mailto:futsaloonsupport@gmail.com">Contatti</a>
+    </div>
+  </footer>
+
+</body>
+</html>

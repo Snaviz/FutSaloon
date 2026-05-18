@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Termini di Servizio — FutSaloon</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #21262d;
+      --green: #4CAF50;
+      --green-dark: #1a2e1b;
+      --gold: #f0a500;
+      --gold-dark: #2a2000;
+      --text: #e6edf3;
+      --muted: #7d8590;
+      --orange: #e07b39;
+      --orange-dark: #2a1500;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-ball {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .logo-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .header-badge {
+      margin-left: auto;
+      background: var(--gold-dark);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--gold);
+    }
+    .hero {
+      background: linear-gradient(135deg, #1a1500 0%, var(--bg) 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .hero-icon { font-size: 48px; margin-bottom: 16px; }
+    .hero h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero-date {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .section { margin-bottom: 40px; }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      background: var(--gold-dark);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: 'DM Mono', monospace;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+    p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .lista li::before {
+      content: '›';
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .lista li strong { color: var(--text); }
+    .nota-orange {
+      background: var(--orange-dark);
+      border: 1px solid var(--orange);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .nota-green {
+      background: var(--green-dark);
+      border: 1px solid var(--green);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .piano-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .piano-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .piano-card.premium { border-color: var(--gold); }
+    .piano-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .piano-card.premium .piano-card-title { color: var(--gold); }
+    .piano-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .piano-card ul li {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .piano-card ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 11px;
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: block;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      color: var(--muted);
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--green); }
+    @media (max-width: 480px) {
+      header { padding: 16px; }
+      .hero { padding: 32px 16px 28px; }
+      .container { padding: 24px 16px 60px; }
+      .piano-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-ball">⚽</div>
+      <span class="logo-name">FutSaloon</span>
+    </a>
+    <span class="header-badge">Termini di Servizio</span>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">📜</div>
+    <h1>Termini di Servizio</h1>
+    <p>Regole e condizioni per l'utilizzo di FutSaloon</p>
+    <span class="hero-date">Ultimo aggiornamento: maggio 2025</span>
+  </div>
+
+  <div class="container">
+
+    <div class="intro-card">
+      Benvenuto in FutSaloon. Utilizzando questa applicazione accetti i presenti Termini di Servizio.
+      Ti invitiamo a leggerli attentamente prima di usare l'app.
+    </div>
+
+    <!-- 1 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">01</span> Descrizione del servizio</h2>
+      <p>FutSaloon è un'applicazione per dispositivi mobili che permette agli utenti di organizzare partite di calcetto, gestire gruppi, tenere traccia di statistiche e comunicare tramite chat con altri giocatori.</p>
+      <p>Il servizio è disponibile in versione gratuita (con funzionalità limitate) e in versione Premium (con funzionalità avanzate, a pagamento).</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">02</span> Creazione dell'account</h2>
+      <ul class="lista">
+        <li>Devi avere almeno <strong>13 anni</strong> per utilizzare FutSaloon</li>
+        <li>Sei responsabile della <strong>sicurezza del tuo account</strong> e delle attività svolte con esso</li>
+        <li>Devi fornire informazioni <strong>accurate e veritiere</strong> durante la registrazione</li>
+        <li>Non puoi creare più di un account per la stessa persona</li>
+      </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">03</span> Uso accettabile</h2>
+      <p>Utilizzando FutSaloon ti impegni a:</p>
+      <ul class="lista">
+        <li>Usare l'app in modo <strong>lecito e rispettoso</strong> verso gli altri utenti</li>
+        <li>Non inviare in chat contenuti offensivi, violenti, discriminatori o illegali</li>
+        <li>Non tentare di accedere ad account altrui o a dati riservati</li>
+        <li>Non usare l'app per attività commerciali non autorizzate</li>
+        <li>Non interferire con il funzionamento dell'app o dei suoi server</li>
+        <li>Non creare account falsi o impersonare altri utenti</li>
+      </ul>
+      <div class="nota-orange">
+        ⚠️ La violazione di queste regole può comportare la sospensione o cancellazione del tuo account, senza preavviso e senza rimborso.
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">04</span> Contenuti dell'utente</h2>
+      <p>Sei il solo responsabile dei contenuti che pubblichi su FutSaloon (messaggi in chat, nome, foto profilo, ecc.). Caricando contenuti, garantisci di avere i diritti necessari e che tali contenuti non violino leggi o diritti di terzi.</p>
+      <p>Ci riserviamo il diritto di rimuovere contenuti che violino questi termini, senza necessità di preavviso.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">05</span> Piano gratuito e Premium</h2>
+      <div class="piano-grid">
+        <div class="piano-card">
+          <div class="piano-card-title">🆓 Piano gratuito</div>
+          <ul>
+            <li>Massimo 4 gruppi</li>
+            <li>12 giocatori per partita</li>
+            <li>5 badge sbloccabili</li>
+            <li>Ultime 5 partite per gruppo</li>
+            <li>Classifica locale</li>
+          </ul>
+        </div>
+        <div class="piano-card premium">
+          <div class="piano-card-title">⭐ Piano Premium</div>
+          <ul>
+            <li>Gruppi illimitati</li>
+            <li>30 giocatori per partita</li>
+            <li>20 badge sbloccabili</li>
+            <li>Storico illimitato</li>
+            <li>Classifica globale</li>
+          </ul>
+        </div>
+      </div>
+      <p>Il piano Premium è disponibile in abbonamento mensile (3,99€/mese) o annuale (39,99€/anno). I prezzi possono variare. L'abbonamento si rinnova automaticamente salvo cancellazione prima del rinnovo.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">06</span> Pagamenti e rimborsi</h2>
+      <p>I pagamenti Premium vengono gestiti tramite Google Play Store. Si applicano le politiche di rimborso di Google Play. FutSaloon non gestisce direttamente i pagamenti e non è responsabile di eventuali problemi transazionali.</p>
+      <p>Puoi cancellare l'abbonamento in qualsiasi momento dal tuo account Google Play. La cancellazione è effettiva al termine del periodo già pagato.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">07</span> Disponibilità del servizio</h2>
+      <p>Ci impegniamo a garantire la disponibilità dell'app, ma non possiamo garantire un servizio ininterrotto. Potremmo sospendere temporaneamente il servizio per manutenzione, aggiornamenti o cause di forza maggiore, senza preavviso.</p>
+      <p>Ci riserviamo il diritto di modificare, sospendere o interrompere il servizio in qualsiasi momento, con o senza preavviso.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">08</span> Limitazione di responsabilità</h2>
+      <p>FutSaloon è fornito "così com'è". Non siamo responsabili per:</p>
+      <ul class="lista">
+        <li>Perdita di dati causata da interruzioni del servizio</li>
+        <li>Danni derivanti da contenuti pubblicati da altri utenti</li>
+        <li>Controversie tra utenti</li>
+        <li>Eventuali infortuni o danni fisici legati alle partite organizzate tramite l'app</li>
+      </ul>
+      <div class="nota-green">
+        ⚽ FutSaloon è uno strumento di organizzazione — la responsabilità per lo svolgimento delle partite ricade interamente sui partecipanti.
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">09</span> Proprietà intellettuale</h2>
+      <p>Il nome "FutSaloon", il logo e tutti i contenuti dell'app (grafica, testi, codice) sono di proprietà di FutSaloon. È vietata la riproduzione, distribuzione o modifica senza autorizzazione scritta.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">10</span> Cancellazione dell'account</h2>
+      <p>Puoi eliminare il tuo account in qualsiasi momento dalle Impostazioni → Account → Elimina account. Alla cancellazione, tutti i tuoi dati personali vengono rimossi dai nostri server entro 30 giorni.</p>
+      <p>Ci riserviamo il diritto di sospendere o cancellare account che violino questi termini, senza obbligo di rimborso per eventuali abbonamenti in corso.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">11</span> Modifiche ai termini</h2>
+      <p>Potremmo aggiornare questi Termini periodicamente. Le modifiche sostanziali saranno comunicate tramite notifica nell'app. L'uso continuato di FutSaloon dopo le modifiche costituisce accettazione dei nuovi termini.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">12</span> Legge applicabile</h2>
+      <p>Questi Termini sono regolati dalla legge italiana. Per qualsiasi controversia è competente il Foro di Milano, salvo diversa previsione di legge.</p>
+    </div>
+
+    <!-- 13 -->
+    <div class="section">
+      <h2 class="section-title"><span class="section-num">13</span> Contatti</h2>
+      <p>Per qualsiasi domanda su questi Termini di Servizio:<br/>
+      <a href="mailto:futsaloonsupport@gmail.com">futsaloonsupport@gmail.com</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-logo">⚽ FutSaloon</span>
+    <span>Termini di Servizio · v1.0 · maggio 2025</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Termini di Servizio</a>
+      <a href="mailto:futsaloonsupport@gmail.com">Contatti</a>
+    </div>
+  </footer>
+
+</body>
+</html>

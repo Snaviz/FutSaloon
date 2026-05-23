@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unisciti a FutSaloon</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #21262d;
+      --green: #4CAF50;
+      --green-dark: #1a2e1b;
+      --text: #e6edf3;
+      --muted: #7d8590;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 20px;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .logo-fallback {
+      width: 96px;
+      height: 96px;
+      background: var(--green-dark);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin: 0 auto 20px;
+      border: 1px solid var(--green);
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    h1 span { color: var(--green); }
+
+    .invite-box {
+      background: var(--green-dark);
+      border: 1px solid var(--green);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .invite-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .invite-group {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .invite-code {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      display: block;
+      background: var(--green);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      margin-bottom: 12px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-primary:active { opacity: 0.85; }
+
+    .btn-secondary {
+      display: block;
+      background: var(--bg);
+      color: var(--green);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid var(--green);
+      cursor: pointer;
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .feature {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .feature-icon { font-size: 22px; }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .status-msg {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-fallback">⚽</div>
+
+    <h1>Fut<span>Saloon</span></h1>
+    <p class="subtitle">Sei stato invitato a unirti su FutSaloon — l'app per organizzare il tuo calcetto!</p>
+
+    <!-- Box invito dinamico -->
+    <div class="invite-box" id="inviteBox" style="display:none">
+      <div class="invite-label">Invito per</div>
+      <div class="invite-group" id="groupName">Gruppo</div>
+      <div class="invite-code" id="inviteInfo"></div>
+    </div>
+
+    <!-- Pulsante apri app -->
+    <button class="btn-primary" onclick="apriApp()" id="btnApp">
+      ⚽ Apri in FutSaloon
+    </button>
+
+    <p class="status-msg" id="statusMsg">
+      Se l'app non si apre, scaricala qui sotto 👇
+    </p>
+
+    <div class="divider">oppure</div>
+
+    <!-- Pulsante Play Store -->
+    <a class="btn-secondary" href="https://play.google.com/store/apps/details?id=com.futsaloon.app"
+       id="btnStore" target="_blank">
+      📲 Scarica su Google Play
+    </a>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">📅</span>
+        <span>Partite</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🏆</span>
+        <span>Classifica</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">💬</span>
+        <span>Chat</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎖️</span>
+        <span>Badge</span>
+      </div>
+    </div>
+
+    <div class="footer">FutSaloon · Gratuito su Android</div>
+  </div>
+
+  <script>
+    // Leggi parametri URL
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const groupId = params.get('id');
+    const groupName = params.get('name');
+
+    // Mostra box invito se ci sono parametri
+    if (code || groupId) {
+      document.getElementById('inviteBox').style.display = 'block';
+      if (groupName) {
+        document.getElementById('groupName').textContent = decodeURIComponent(groupName);
+      } else {
+        document.getElementById('groupName').textContent = 'Gruppo FutSaloon';
+      }
+      if (code) {
+        document.getElementById('inviteInfo').textContent = '🔑 Codice: ' + code;
+      } else {
+        document.getElementById('inviteInfo').textContent = '🌍 Gruppo pubblico';
+      }
+    }
+
+    // Funzione apri app
+    function apriApp() {
+      let deepLink = 'futsaloon://join?';
+      if (code) deepLink += 'code=' + code;
+      else if (groupId) deepLink += 'id=' + groupId;
+      if (groupName) deepLink += '&name=' + groupName;
+
+      // Prova ad aprire l'app
+      window.location.href = deepLink;
+
+      // Dopo 2 secondi, se non si è aperta, mostra messaggio
+      setTimeout(() => {
+        document.getElementById('statusMsg').style.display = 'block';
+      }, 2000);
+    }
+
+    // Auto-apri se parametri presenti
+    if (code || groupId) {
+      setTimeout(apriApp, 500);
+    }
+  </script>
+</body>
+</html>
